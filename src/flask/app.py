@@ -410,7 +410,7 @@ class Flask(App):
         )
 
     def open_resource(
-        self, resource: str, mode: str = "rb", encoding: str | None = None
+        self, resource: str, mode: str = "rb", encoding: str | None = "utf-8"
     ) -> t.IO[t.AnyStr]:
         """Open a resource file relative to :attr:`root_path` for reading.
 

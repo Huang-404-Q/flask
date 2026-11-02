@@ -375,3 +375,11 @@ def test_open_resource_with_encoding(tmp_path, encoding):
 
     with app.open_resource("test", mode="rt", encoding=encoding) as f:
         assert f.read() == "test"
+
+
+def test_open_resource_default_encoding(tmp_path):
+    app = flask.Flask(__name__, root_path=os.fspath(tmp_path))
+    (tmp_path / "test").write_text("test", encoding="utf-8")
+
+    with app.open_resource("test", mode="rt") as f:
+        assert f.encoding == "utf-8"
